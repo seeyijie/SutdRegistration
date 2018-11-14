@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "828263496059",
+    "firebase_url": "https://helloworld-8cf45.firebaseio.com",
+    "project_id": "helloworld-8cf45",
+    "storage_bucket": "helloworld-8cf45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828263496059:android:85b944d410090f0f",
+        "android_client_info": {
+          "package_name": "com.example.benjamin.firebasetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828263496059-g1fpn9a71rm8k6u3qi25ag6lp5qlkpgc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.benjamin.firebasetest",
+            "certificate_hash": "0995fb6997d005c3230770b3d38291ae2b389a3a"
+          }
+        },
+        {
+          "client_id": "828263496059-f055cnmt7i1dbdcjhfn2eal39rq0o82j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn4roCkO9fUz9R-_-aG4u4c2diF2ABO_c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "828263496059-f055cnmt7i1dbdcjhfn2eal39rq0o82j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828263496059:android:b386eba06abc4b88",
+        "android_client_info": {
+          "package_name": "com.example.benjamin.sutdregistration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828263496059-mqra54eludvpiul1oaulbkd3jie3v0vk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.benjamin.sutdregistration",
+            "certificate_hash": "0995fb6997d005c3230770b3d38291ae2b389a3a"
+          }
+        },
+        {
+          "client_id": "828263496059-f055cnmt7i1dbdcjhfn2eal39rq0o82j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn4roCkO9fUz9R-_-aG4u4c2diF2ABO_c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "828263496059-f055cnmt7i1dbdcjhfn2eal39rq0o82j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
