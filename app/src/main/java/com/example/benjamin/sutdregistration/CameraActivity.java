@@ -26,6 +26,7 @@ import java.io.ByteArrayOutputStream;
 public class CameraActivity extends AppCompatActivity {
 
     private Button buttonImage;
+    private Button newRegistration;
     private ImageView imageView;
     ContentValues values;
     Uri imageUri;
@@ -82,6 +83,17 @@ public class CameraActivity extends AppCompatActivity {
         if (extras != null) {
             studentID = extras.getString("STUDENT_ID");
         }
+
+        //new registration button: brings back to main_activity
+        newRegistration = this.findViewById(R.id.button_image2);
+        newRegistration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CameraActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
 
         this.buttonImage = this.findViewById(R.id.button_image);
         this.imageView = this.findViewById(R.id.imageView);

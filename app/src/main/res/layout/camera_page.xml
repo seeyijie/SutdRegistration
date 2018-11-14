@@ -7,19 +7,29 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="450dp"
+        android:layout_height="400dp"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Capture and Upload"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:text="Take photo and upload"
         android:background="@drawable/mybutton"
         android:id="@+id/button_image"
-        android:layout_margin="5dp"
-        android:layout_below="@id/imageView"/>
+        android:layout_margin="3dp"
+        android:layout_above="@id/button_image2"/>
+
+    <Button
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:text="New registration"
+        android:background="@drawable/mybutton"
+        android:id="@+id/button_image2"
+        android:layout_margin="3dp"
+        android:layout_alignParentBottom="true"/>
 
 
 </RelativeLayout>
