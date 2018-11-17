@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import java.io.ByteArrayOutputStream;
+import java.util.UUID;
 
 
 public class CameraActivity extends AppCompatActivity {
@@ -171,18 +172,27 @@ public class CameraActivity extends AppCompatActivity {
                     pic.compress(Bitmap.CompressFormat.PNG, 100, baos);
                     String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
 
+                    /*
+
+                    //TODO, do not allow a single student ID to have multiple photos and new data does not overwrite old data.
+                    //format from python.
+
+
+                    //TODO, create unique ID as parent class - Done
+                    String uniqueID = UUID.randomUUID().toString();
+                     */
+
+
+
                     //TODO, send pic to firebase - Done
                     //we send the string over to firebase
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference myRef = database.getReference("Photo");
-                    myRef.setValue(imageEncoded);
+                    DatabaseReference myRef = database.getReference("registration");
+                    myRef.child(studentID).child("Photo").setValue(imageEncoded);
 
                     //TODO send studentID to firebase - Done
-                    DatabaseReference myRef2 = database.getReference("Student Id");
-                    myRef2.setValue(studentID);
-
-                    //TODO send array over, does not overwrite old data.
-
+//                    DatabaseReference myRef2 = database.getReference(uniqueID);
+//                    myRef2.child("Student Id").setValue(studentID);
 
                     Toast.makeText(CameraActivity.this, "Uploading finished :)", Toast.LENGTH_LONG).show();
 
