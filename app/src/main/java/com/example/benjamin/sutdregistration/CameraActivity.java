@@ -174,8 +174,6 @@ public class CameraActivity extends AppCompatActivity {
 
                     /*
 
-                    //TODO, do not allow a single student ID to have multiple photos and new data does not overwrite old data.
-                    //format from python.
 
 
                     //TODO, create unique ID as parent class - Done
@@ -194,7 +192,7 @@ public class CameraActivity extends AppCompatActivity {
 //                    DatabaseReference myRef2 = database.getReference(uniqueID);
 //                    myRef2.child("Student Id").setValue(studentID);
 
-                    Toast.makeText(CameraActivity.this, "Uploading finished :)", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CameraActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
 
 //                        final ProgressDialog progressDialog = new ProgressDialog(this);
 //                        progressDialog.setTitle("Uploading...");
