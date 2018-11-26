@@ -18,6 +18,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="publitio_api_key"
+            android:value="APIKEY" />
+
+
+        <meta-data
+            android:name="publitio_api_secret"
+            android:value="APISECRETKEY" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

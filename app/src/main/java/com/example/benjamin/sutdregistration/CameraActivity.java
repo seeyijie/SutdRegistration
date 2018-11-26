@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,7 +21,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import com.google.gson.JsonObject;
+import com.publit.publit_io.utils.PublitioCallback;
+import com.publit.publit_io.utils.Publitio;
 import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -33,6 +40,8 @@ public class CameraActivity extends AppCompatActivity {
     Uri imageUri;
     String imageurl;
     private String studentID;
+    Publitio mPublitio;
+
 
     private static final int REQUEST_ID_READ_WRITE_PERMISSION = 99;
     private static final int REQUEST_ID_IMAGE_CAPTURE = 100;
@@ -158,6 +167,8 @@ public class CameraActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        mPublitio = new Publitio(this);
+        Map<String, String> create = new HashMap<>();
 
         if (requestCode == REQUEST_ID_IMAGE_CAPTURE) {
             if (resultCode == RESULT_OK) {
@@ -171,7 +182,19 @@ public class CameraActivity extends AppCompatActivity {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     pic.compress(Bitmap.CompressFormat.PNG, 100, baos);
                     String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+                    mPublitio.files().uploadFile(imageUri, create, new PublitioCallback<JsonObject>() {
+                        @Override
+                        public void success(JsonObject result) {
+                            Log.d("Publitio", "file uploaded: " + result.toString());
+                        }
 
+                        @Override
+                        public void failure(String message) {
+
+                            Log.d("Publitio", "file upload error: " + message.toString());
+
+                        }
+                    });
                     /*
 
 
