@@ -211,9 +211,9 @@ public class CameraActivity extends AppCompatActivity {
 
                     //TODO, send pic to firebase - Done
                     //we send the string over to firebase
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference myRef = database.getReference("registration");
-                    myRef.child(studentID).child("Photo").setValue(imageEncoded);
+//                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                    DatabaseReference myRef = database.getReference("registration");
+//                    myRef.child(studentID).child("Photo").setValue(imageEncoded);
 
                     //TODO send studentID to firebase - Done
 //                    DatabaseReference myRef2 = database.getReference(uniqueID);
