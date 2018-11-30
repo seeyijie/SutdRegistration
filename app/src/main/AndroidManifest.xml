@@ -20,12 +20,12 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="publitio_api_key"
-            android:value="APIKEY" />
+            android:value="API_KEY" />
 
 
         <meta-data
             android:name="publitio_api_secret"
-            android:value="APISECRETKEY" />
+            android:value="API_SECRET_KEY" />
 
         <activity android:name=".MainActivity">
             <intent-filter>

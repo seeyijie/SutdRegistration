@@ -186,6 +186,10 @@ public class CameraActivity extends AppCompatActivity {
                         @Override
                         public void success(JsonObject result) {
                             Log.d("Publitio", "file uploaded: " + result.toString());
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference("Awaiting Approval");
+                            myRef.child(studentID).child("url_download").setValue(result.get("url_download").toString());
+                            Log.d("Result type: ", "checked" + result.get("url_download").toString());
                         }
 
                         @Override
