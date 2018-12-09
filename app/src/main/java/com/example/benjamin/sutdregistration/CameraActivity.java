@@ -9,6 +9,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
@@ -17,6 +19,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -114,6 +120,95 @@ public class CameraActivity extends AppCompatActivity {
                 captureImage();
             }
         });
+
+        // Check for Approved List on Firebase
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRefApproved = database.getReference("Approved");
+
+        myRefApproved.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String name = dataSnapshot.child("name").getValue(String.class);
+                String id = dataSnapshot.getKey();
+                Log.d("Check id (id): ", id);
+                Log.d ("Check id (studentID): ", studentID);
+                Log.d("Check name: ", name);
+                if (studentID.equals(id)) {
+                    Toast.makeText(CameraActivity.this,
+                            "Verified! \nWelcome " + name,
+                            Toast.LENGTH_LONG).show();
+                    Log.d("Info", name);
+                    Log.d("Info", id);
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+        });
+//
+////         Check for Rejected List on Firebase
+////        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRefRejected = database.getReference("Rejected");
+//
+//        myRefRejected.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                String name = dataSnapshot.child("name").getValue(String.class);
+//                String id = dataSnapshot.getKey();
+//                Log.d("Check id (id): ", id);
+//                Log.d ("Check id (studentID): ", studentID);
+//                Log.d("Check name: ", name);
+//                if (studentID.equals(id)) {
+//                    Toast.makeText(CameraActivity.this,
+//                            "Failed Verification! \n" +
+//                                    "Please approach the nearest staff for manual verification, " +
+//                                    name + ".",
+//                            Toast.LENGTH_LONG).show();
+//                    Log.d("Info", name);
+//                    Log.d("Info", id);
+//                }
+//            }
+//
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//
+//        });
+
     }
 
     private void captureImage() {
@@ -170,6 +265,7 @@ public class CameraActivity extends AppCompatActivity {
         mPublitio = new Publitio(this);
         Map<String, String> create = new HashMap<>();
 
+
         if (requestCode == REQUEST_ID_IMAGE_CAPTURE) {
             if (resultCode == RESULT_OK) {
                 try {
@@ -219,11 +315,15 @@ public class CameraActivity extends AppCompatActivity {
 //                    DatabaseReference myRef2 = database.getReference(uniqueID);
 //                    myRef2.child("Student Id").setValue(studentID);
 
-                    Toast.makeText(CameraActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CameraActivity.this,
+                            "Upload successful\nPlease wait while we verify your identity",
+                            Toast.LENGTH_LONG).show();
 
 //                        final ProgressDialog progressDialog = new ProgressDialog(this);
 //                        progressDialog.setTitle("Uploading...");
 //                        progressDialog.show();
+
+
 
                 } catch (Exception e) {
                     Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
@@ -235,6 +335,7 @@ public class CameraActivity extends AppCompatActivity {
                 Toast.makeText(this, "Action Failed", Toast.LENGTH_LONG).show();
             }
         }
+
     }
 
     public String getRealPathFromURI(Uri contentUri) {

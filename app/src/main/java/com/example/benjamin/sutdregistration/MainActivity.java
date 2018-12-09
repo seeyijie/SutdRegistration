@@ -1,6 +1,8 @@
 package com.example.benjamin.sutdregistration;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         takePictureIntent.putExtra("STUDENT_ID", studentidContent);
         startActivity(takePictureIntent);
     }
+
 
     public boolean isStringInt(String s)
     {
@@ -85,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 }
 
